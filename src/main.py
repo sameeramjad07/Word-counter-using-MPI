@@ -31,21 +31,42 @@ def main():
     if rank == 0:
         print(f"Dividing into {size} chunks, each ~{chunk_size} bytes")
 
-    # Log chunk assignment
+    # Prepare chunk assignment log
     start_byte = rank * chunk_size
     end_byte = min((rank + 1) * chunk_size, file_size)
-    with open('results/worker_logs.txt', 'a', encoding='utf-8') as f:
-        f.write(f"Rank {rank}: Assigned chunk from byte {start_byte} to {end_byte}\n")
+    log_message = f"Rank {rank}: Assigned chunk from byte {start_byte} to {end_byte}\n"
 
     # Read and scatter file
     chunk = read_and_scatter_file(input_file, chunk_size, comm, rank, size)
 
-    
     # Count words in chunk
     local_counts = count_words(chunk.decode('utf-8', errors='ignore'))
     local_word_count = sum(local_counts.values())
-    with open('results/worker_logs.txt', 'a', encoding='utf-8') as f:
-        f.write(f"Rank {rank}: Processed {local_word_count} words\n")
+    log_message += f"Rank {rank}: Processed {local_word_count} words\n"
+
+    # Gather log messages to root
+    log_messages = comm.gather(log_message, root=0)
+
+    # Write logs and execution time (root only)
+    if rank == 0:
+        os.makedirs('results', exist_ok=True)
+        with open('results/worker_logs.txt', 'a', encoding='utf-8') as f:
+            for msg in log_messages:
+                f.write(msg)
+        # Log execution time for scaling (only for large input)
+        end_time = MPI.Wtime()
+        execution_time = end_time - start_time
+        if 'large_input.txt' in input_file:
+            with open('results/scaling_times.txt', 'a', encoding='utf-8') as f:
+                # Check if entry exists to avoid duplicates (simplified check)
+                existing = False
+                with open('results/scaling_times.txt', 'r', encoding='utf-8') as f_read:
+                    for line in f_read:
+                        if f"Processes: {size}" in line and 'large_input.txt' in line:
+                            existing = True
+                            break
+                if not existing:
+                    f.write(f"Processes: {size}, File: {input_file}, Time: {execution_time:.4f}\n")
 
     # Aggregate counts
     global_counts = aggregate_counts(local_counts, comm, rank, size)
@@ -62,8 +83,7 @@ def main():
         save_word_frequencies(global_counts, "results/word_frequencies.txt")
 
         # Timing
-        end_time = MPI.Wtime()
-        print(f"\nExecution time: {end_time - start_time:.4f} seconds")
+        print(f"\nExecution time: {execution_time:.4f} seconds")
 
     MPI.Finalize()
 

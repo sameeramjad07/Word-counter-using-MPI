@@ -9,42 +9,63 @@ def read_worker_logs(log_file):
             for line in f:
                 if "Processed" in line:
                     parts = line.split()
-                    rank = int(parts[1].strip(':'))
-                    count = int(parts[3])
-                    word_counts.append((rank, count))
+                    if len(parts) >= 4:
+                        rank = int(parts[1].strip(':'))
+                        count = int(parts[3])
+                        word_counts.append((rank, count))
     return word_counts
 
 def plot_word_frequencies():
     words = []
     counts = []
     
-    with open('results/word_frequencies.txt', 'r', encoding='utf-8') as f:
+    # Read word frequencies
+    freq_file = 'results/word_frequencies.txt'
+    if not os.path.exists(freq_file):
+        print(f"Frequency file {freq_file} not found.")
+        return
+    
+    with open(freq_file, 'r', encoding='utf-8') as f:
         for line in f:
             word, count = line.strip().split()
             words.append(word)
             counts.append(int(count))
     
-    # Take top 10 words
+    # Get top 5 and top 10 words
     indices = np.argsort(counts)[-10:][::-1]
-    top_words = [words[i] for i in indices]
-    top_counts = [counts[i] for i in indices]
+    top10_words = [words[i] for i in indices]
+    top10_counts = [counts[i] for i in indices]
+    top5_words = top10_words[:5]
+    top5_counts = top10_counts[:5]
     
-    # Plot word frequencies
-    plt.figure(figsize=(12, 8))
-    plt.subplot(2, 1, 1)
-    plt.bar(top_words, top_counts)
+    # Read worker contributions
+    word_counts = read_worker_logs('results/worker_logs.txt')
+    
+    # Create three-subplot figure
+    plt.figure(figsize=(12, 12))
+    
+    # Plot top 5 words
+    plt.subplot(3, 1, 1)
+    plt.bar(top5_words, top5_counts, color='skyblue')
+    plt.title('Top 5 Most Frequent Words')
+    plt.xlabel('Words')
+    plt.ylabel('Frequency')
+    plt.xticks(rotation=45)
+    
+    # Plot top 10 words
+    plt.subplot(3, 1, 2)
+    plt.bar(top10_words, top10_counts, color='lightgreen')
     plt.title('Top 10 Most Frequent Words')
     plt.xlabel('Words')
     plt.ylabel('Frequency')
     plt.xticks(rotation=45)
     
     # Plot worker contributions
-    word_counts = read_worker_logs('results/worker_logs.txt')
     if word_counts:
         ranks = [rank for rank, _ in word_counts]
         counts = [count for _, count in word_counts]
-        plt.subplot(2, 1, 2)
-        plt.bar(ranks, counts)
+        plt.subplot(3, 1, 3)
+        plt.bar(ranks, counts, color='salmon')
         plt.title('Words Processed per Worker')
         plt.xlabel('Process Rank')
         plt.ylabel('Words Processed')

@@ -1,0 +1,86 @@
+Rank 0: Assigned chunk from byte 0 to 84
+Rank 0: Processed 16 words
+Rank 1: Assigned chunk from byte 84 to 168
+Rank 1: Processed 13 words
+Rank 2: Assigned chunk from byte 168 to 252
+Rank 2: Processed 11 words
+Rank 3: Assigned chunk from byte 252 to 334
+Rank 3: Processed 15 words
+Rank 0: Assigned chunk from byte 0 to 21138
+Rank 0: Processed 2955 words
+Rank 1: Assigned chunk from byte 21138 to 42276
+Rank 1: Processed 2968 words
+Rank 2: Assigned chunk from byte 42276 to 63414
+Rank 2: Processed 3019 words
+Rank 3: Assigned chunk from byte 63414 to 84552
+Rank 3: Processed 3042 words
+Rank 4: Assigned chunk from byte 84552 to 105690
+Rank 4: Processed 2978 words
+Rank 5: Assigned chunk from byte 105690 to 126828
+Rank 5: Processed 2979 words
+Rank 6: Assigned chunk from byte 126828 to 147966
+Rank 6: Processed 2954 words
+Rank 7: Assigned chunk from byte 147966 to 169097
+Rank 7: Processed 2937 words
+Rank 0: Assigned chunk from byte 0 to 169097
+Rank 0: Processed 23826 words
+Rank 0: Assigned chunk from byte 0 to 84549
+Rank 0: Processed 11980 words
+Rank 1: Assigned chunk from byte 84549 to 169097
+Rank 1: Processed 11847 words
+Rank 0: Assigned chunk from byte 0 to 42275
+Rank 0: Processed 5922 words
+Rank 1: Assigned chunk from byte 42275 to 84550
+Rank 1: Processed 6059 words
+Rank 2: Assigned chunk from byte 84550 to 126825
+Rank 2: Processed 5956 words
+Rank 3: Assigned chunk from byte 126825 to 169097
+Rank 3: Processed 5891 words
+Rank 0: Assigned chunk from byte 0 to 21138
+Rank 0: Processed 2955 words
+Rank 1: Assigned chunk from byte 21138 to 42276
+Rank 1: Processed 2968 words
+Rank 2: Assigned chunk from byte 42276 to 63414
+Rank 2: Processed 3019 words
+Rank 3: Assigned chunk from byte 63414 to 84552
+Rank 3: Processed 3042 words
+Rank 4: Assigned chunk from byte 84552 to 105690
+Rank 4: Processed 2978 words
+Rank 5: Assigned chunk from byte 105690 to 126828
+Rank 5: Processed 2979 words
+Rank 6: Assigned chunk from byte 126828 to 147966
+Rank 6: Processed 2954 words
+Rank 7: Assigned chunk from byte 147966 to 169097
+Rank 7: Processed 2937 words
+Rank 0: Assigned chunk from byte 0 to 10569
+Rank 0: Processed 1526 words
+Rank 1: Assigned chunk from byte 10569 to 21138
+Rank 1: Processed 1429 words
+Rank 2: Assigned chunk from byte 21138 to 31707
+Rank 2: Processed 1564 words
+Rank 3: Assigned chunk from byte 31707 to 42276
+Rank 3: Processed 1404 words
+Rank 4: Assigned chunk from byte 42276 to 52845
+Rank 4: Processed 1556 words
+Rank 5: Assigned chunk from byte 52845 to 63414
+Rank 5: Processed 1464 words
+Rank 6: Assigned chunk from byte 63414 to 73983
+Rank 6: Processed 1509 words
+Rank 7: Assigned chunk from byte 73983 to 84552
+Rank 7: Processed 1534 words
+Rank 8: Assigned chunk from byte 84552 to 95121
+Rank 8: Processed 1439 words
+Rank 9: Assigned chunk from byte 95121 to 105690
+Rank 9: Processed 1540 words
+Rank 10: Assigned chunk from byte 105690 to 116259
+Rank 10: Processed 1413 words
+Rank 11: Assigned chunk from byte 116259 to 126828
+Rank 11: Processed 1567 words
+Rank 12: Assigned chunk from byte 126828 to 137397
+Rank 12: Processed 1436 words
+Rank 13: Assigned chunk from byte 137397 to 147966
+Rank 13: Processed 1519 words
+Rank 14: Assigned chunk from byte 147966 to 158535
+Rank 14: Processed 1490 words
+Rank 15: Assigned chunk from byte 158535 to 169097
+Rank 15: Processed 1447 words

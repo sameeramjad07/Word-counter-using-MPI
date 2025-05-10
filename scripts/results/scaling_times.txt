@@ -1,0 +1,5 @@
+Processes: 8, File: D:\code\mpi_wordCounter\data\large_input.txt, Time: 0.0100
+Processes: 1, File: D:\code\mpi_wordCounter\data\large_input.txt, Time: 0.0144
+Processes: 2, File: D:\code\mpi_wordCounter\data\large_input.txt, Time: 0.0092
+Processes: 4, File: D:\code\mpi_wordCounter\data\large_input.txt, Time: 0.0071
+Processes: 16, File: D:\code\mpi_wordCounter\data\large_input.txt, Time: 0.0069
